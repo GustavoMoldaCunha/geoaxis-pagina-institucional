@@ -7,16 +7,20 @@
       name="description"
       content="GeoAxis – Consultoria e Engenharia Ambiental. Soluções personalizadas para empresas que buscam sustentabilidade e conformidade ambiental no RJ."
     />
+    <meta name="google-site-verification" content="2_Uq0PogL0joQ1Qm_hjlYTdJRtOUbMCPAgl1NILWv_g" />
 
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link rel="apple-touch-icon" href="images/favicon.png" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap">
+    
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
+      content="width=device-width, initial-scale=1"
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.geoaxis.com.br/" />
+    <meta property="og:url" content="https://www.geoaxisambiental.com.br/" />
     <meta
       property="og:title"
       content="GeoAxis – Consultoria e Engenharia Ambiental"
@@ -27,10 +31,10 @@
     />
     <meta
       property="og:image"
-      content="https://www.geoaxis.com.br/images/banner.jpg"
+      content="https://www.geoaxisambiental.com.br/images/banner.jpg"
     />
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.geoaxis.com.br/" />
+    <meta property="twitter:url" content="https://www.geoaxisambiental.com.br/" />
     <meta
       property="twitter:title"
       content="GeoAxis – Consultoria e Engenharia Ambiental"
@@ -41,23 +45,45 @@
     />
     <meta
       property="twitter:image"
-      content="https://www.geoaxis.com.br/images/banner.jpg"
+      content="https://www.geoaxisambiental.com.br/images/banner.jpg"
     />
 
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
+
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.geoaxisambiental.com.br/" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "GeoAxis",
+        "description": "Consultoria e Engenharia Ambiental no Rio de Janeiro",
+        "url": "https://www.geoaxis.com.br",
+        "logo": "https://www.geoaxis.com.br/images/favicon.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Rio de Janeiro",
+          "addressRegion": "RJ",
+          "addressCountry": "BR"
+        },
+        "areaServed": "Rio de Janeiro"
+      }
+      </script>
+
   </head>
 
-  <body class="is-preload">
+<body class="is-preload">
     <div id="wrapper" class="divided">
       <!-- Banner -->
       <section
         class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right"
       >
         <div class="content banner-content">
-          <img src="images/logo1.gif" alt="GeoAxis" class="banner-logo" />
+          <img src="images/logo2.gif" alt="GeoAxis" class="banner-logo" />
           <div class="banner-text-wrapper">
             <p class="major banner-text">
               O eixo certo para a sustentabilidade do seu negócio.
@@ -79,7 +105,7 @@
           </div>
         </div>
         <div class="image">
-          <img src="images/banner.jpg" alt="Natureza e sustentabilidade" />
+          <img src="images/banner.png" alt="Natureza e sustentabilidade" />
         </div>
       </section>
 
@@ -88,7 +114,8 @@
         <div class="inner secao-servicos">
           <h2>Serviços</h2>
           <div class="items style1 medium onscroll-fade-in">
-            <section>
+            
+            <section class="card">
               <img
                 src="images/Consultoria.png"
                 alt="Consultoria Ambiental"
@@ -105,10 +132,11 @@
                 <li>Assessoria técnica</li>
                 <li>Conformidade legal</li>
                 <li>Apoio em processos ambientais</li>
+                <li>Perícia de Engenharia e Contratos (Colaborador Homologado pelos TJ RJ e TJ ES)</li>
               </ul>
             </section>
 
-            <section>
+            <section class="card">
               <img
                 src="images/Licenciamento.png"
                 alt="Licenciamento Ambiental"
@@ -141,12 +169,8 @@
               <button class="button small servico-ver-mais">Ver mais</button>
             </section>
 
-            <section>
-              <img
-                src="images/Assessoria.png"
-                alt="Assessoria e Gestão Ambiental"
-                class="servico-icone"
-              />
+            <section class="card">
+              <img src="images/Assessoria.png" alt="Assessoria e Gestão Ambiental" class="servico-icone"/>
               <h3>Assessoria e Gestão Ambiental</h3>
               <p>
                 Oferecemos suporte contínuo para empresas que desejam manter
@@ -204,7 +228,7 @@
           </p>
         </div>
         <div class="image">
-          <img src="images/spotlight01.jpg" alt="Equipe GeoAxis em campo" />
+          <img src="images/spotlight01.jpg" alt="GeoAxis" />
         </div>
       </section>
 
@@ -216,9 +240,10 @@
               <span class="icon solid style2 major fa-bullseye"></span>
               <h3>Missão</h3>
               <p>
-                Oferecer consultoria e assessoria técnica com excelência, 
-                fornecer direcionamento seguro aos clientes, assegurar conformidade 
-                regulatória e contribuir para a sustentabilidade dos negócios.
+                Oferecer consultoria e assessoria técnica com excelência,
+                fornecer direcionamento seguro aos clientes, assegurar
+                conformidade regulatória e contribuir para a sustentabilidade
+                dos negócios.
               </p>
             </section>
 
@@ -226,9 +251,9 @@
               <span class="icon solid style2 major fa-binoculars"></span>
               <h3>Visão</h3>
               <p>
-                Ser reconhecida como referência em consultoria e assessoria 
-                técnica, tornando-se o eixo estratégico para decisões seguras 
-                e sustentáveis no ambiente empresarial.
+                Ser reconhecida como referência em consultoria e assessoria
+                técnica, tornando-se o eixo estratégico para decisões seguras e
+                sustentáveis no ambiente empresarial.
               </p>
             </section>
 
@@ -353,54 +378,48 @@
       <!-- Contato -->
       <section class="wrapper style1">
         <div class="inner">
+
           <h2 class="align-center">Contato</h2>
           <p class="align-center contato-intro">
             Tem dúvidas ou quer solicitar um orçamento? Estamos prontos para
             entender suas necessidades e oferecer a melhor solução.
           </p>
+
           <div class="contato-grid">
-            <form method="post" action="https://formspree.io/f/maqpbdld">
-              <div class="form-group">
-                <label class="form-label" for="nome">Nome</label>
-                <input
-                  type="text"
-                  name="name"
-                  class="form-input"
-                  id="nome"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="email">E-mail</label>
-                <input
-                  type="email"
-                  name="email"
-                  class="form-input"
-                  id="email"
-                  required
-                />
-              </div>
-              <div class="form-group form-group-last">
-                <label class="form-label" for="mensagem">Mensagem</label>
-                <textarea
-                  name="message"
-                  rows="6"
-                  class="form-input form-textarea"
-                  id="mensagem"
-                  required
-                ></textarea>
-              </div>
-              <input
-                type="submit"
-                value="Enviar mensagem"
-                class="button primary"
-              />
+            <form id="form-contato" method="post" action="https://formspree.io/f/maqpbdld">
+
+                  <input type="text" name="_gotcha" style="display:none">
+
+                  <div>
+                    <label>Nome</label>
+                    <input type="text" name="name" required />
+                  </div>
+
+                  <div>
+                    <label>E-mail</label>
+                    <input type="email" name="email" required />
+                  </div>
+
+                  <div>
+                    <label>Mensagem</label>
+                    <textarea name="message" required></textarea>
+                  </div>
+
+                  <button type="submit" class="button primary" id="btn-enviar">
+                    Enviar mensagem
+                  </button>
+
+                  <p id="mensagem-status"></p>
             </form>
 
             <div class="contato-info">
               <div class="contato-item">
                 <h3 class="contato-label">Localização</h3>
-                <p>Região Serrana e Metropolitana do RJ</p>
+                <p>Rua Ferreira de Castro, 79, Teresópolis - RJ</p>
+              </div>
+              <div class="contato-item">
+                <h3 class="contato-label">Responsável técnico</h3>
+                <p>Rafael P. Machado - Crea-RJ 2025108410 - Crea-SP 5069810941</p>
               </div>
               <div class="contato-item">
                 <h3 class="contato-label">E-mail</h3>
@@ -411,20 +430,20 @@
               <div class="contato-item">
                 <h3 class="contato-label">WhatsApp</h3>
                 <a
-                  href="https://wa.me/5521987617886"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >+55 21 98761-7886</a
-                >
+                    href="https://wa.me/5521987617886"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >+55 21 98761-7886
+                </a>
               </div>
               <div class="contato-item">
                 <h3 class="contato-label">Instagram</h3>
                 <a
-                  href="https://instagram.com/geoaxis.ambiental"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >@geoaxis.ambiental</a
-                >
+                    href="https://instagram.com/geoaxis.ambiental"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >@geoaxis.ambiental
+                </a>
               </div>
             </div>
           </div>
@@ -434,39 +453,38 @@
       <!-- Footer -->
       <footer class="wrapper style1 align-center footer-principal">
         <div class="inner">
-          <ul class="icons">
-            <li>
-              <a
-                href="https://instagram.com/geoaxis.ambiental"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="icon brands style2 fa-instagram"
-              >
-                <span class="label">Instagram</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://wa.me/5521987617886"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="icon brands style2 fa-whatsapp"
-              >
-                <span class="label">WhatsApp</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="/cdn-cgi/l/email-protection#deb9bbb1bfa6b7adf0bfb3bcb7bbb0aabfb29eb9b3bfb7b2f0bdb1b3"
-                class="icon style2 fa-envelope"
-              >
-                <span class="label">Email</span>
-              </a>
-            </li>
-          </ul>
-          <p class="footer-copy">
-            &copy; 2025 GeoAxis. Todos os direitos reservados.
-          </p>
+            <ul class="icons">
+
+                <!-- Instagram -->
+                <li>
+                  <a
+                    href="https://instagram.com/geoaxis.ambiental" target="_blank" rel="noopener noreferrer" class="icon brands style2 fa-instagram">
+                    <span class="label">Instagram</span>
+                  </a>
+                </li>
+
+                <!-- Whatsapp -->
+                <li>
+                  <a
+                    href="https://wa.me/5521987617886" target="_blank" rel="noopener noreferrer" class="icon brands style2 fa-whatsapp">
+                    <span class="label">WhatsApp</span>
+                  </a>
+                </li>
+
+                <!-- E-mail -->
+                <li>
+                    <a
+                      href="mailto:geoaxis.ambiental@gmail.com"
+                      class="icon style2 fa-envelope">
+                      <span class="label">Email</span>
+                    </a>
+                </li>
+
+            </ul>
+            <!-- Texto -->
+            <p class="footer-copy">
+                &copy; 2025 GeoAxis Consultoria e Engenharia Ambiental Ltda. Todos os direitos reservados. <br>CNPJ 63.801.275/0001-44 - Registro CREA-RJ 2026200450 - Inscrita no CTF/AIDA IBAMA - Cadastrada no Inea 
+            </p>
         </div>
       </footer>
     </div>
@@ -481,6 +499,7 @@
       <i class="icon brands fa-whatsapp"></i>
     </a>
 
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
     <script src="assets/js/jquery.scrolly.min.js"></script>
@@ -488,8 +507,8 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
-      // botão ver mais
+
+    <script>// botão ver mais
       document.querySelectorAll(".servico-ver-mais").forEach(function (btn) {
         btn.addEventListener("click", function () {
           var extras = this.previousElementSibling.querySelectorAll(
@@ -502,6 +521,64 @@
           this.textContent = hidden ? "Ver menos" : "Ver mais";
         });
       });
+    </script>
+
+    <script>
+            const form = document.getElementById('form-contato');
+            const btn = document.getElementById('btn-enviar');
+            const status = document.getElementById('mensagem-status');
+
+            let tempoInicio = Date.now();
+
+            form.addEventListener('submit', async (e) => {
+              e.preventDefault();
+
+              // anti-spam
+              if (form._gotcha.value) return;
+
+              if (Date.now() - tempoInicio < 3000) {
+                status.textContent = "Aguarde um instante antes de enviar.";
+                return;
+              }
+
+              // estado: enviando...
+              btn.disabled = true;
+              btn.textContent = "Enviando...";
+
+              try {
+                const response = await fetch(form.action, {
+                  method: "POST",
+                  body: new FormData(form),
+                  headers: { 'Accept': 'application/json' }
+                });
+
+                if (!response.ok) throw new Error();
+
+                // sucesso
+                form.reset();
+                status.textContent = "Mensagem enviada com sucesso!";
+
+                btn.textContent = "Enviado";
+
+                // botão original
+                setTimeout(() => {
+                  btn.disabled = false;
+                  btn.textContent = "Enviar mensagem";
+                  btn.style.backgroundColor = "";
+                }, 2500);
+
+              } 
+              catch (err) {
+                // erro
+                status.textContent = "Erro ao enviar. Tente novamente.";
+
+                btn.disabled = false;
+                btn.textContent = "Enviar mensagem";
+                btn.style.backgroundColor = "";
+              }
+
+              tempoInicio = Date.now();
+            });
     </script>
   </body>
 </html>
