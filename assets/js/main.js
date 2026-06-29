@@ -129,35 +129,59 @@
     .wrapInner('<div class="inner"></div>');
 
   document.querySelectorAll(".marquee-container").forEach(function (container) {
+    var wrapper = container.querySelector(".marquee-track-wrapper");
+    if (!wrapper) return;
+
     var isDragging = false;
     var startX = 0;
-    var startScrollLeft = 0;
+    var startPos = 0;
+    var position = 0;
     var moved = false;
-    var resumeTimer = null;
+    var rafId = null;
+    var pxPerFrame = 0.55;
 
-    function pauseMarquee() {
-      if (resumeTimer) {
-        clearTimeout(resumeTimer);
-        resumeTimer = null;
+    function getLoopWidth() {
+      var track = container.querySelector(".marquee-track");
+      return track ? track.offsetWidth : 0;
+    }
+
+    function normalizePosition() {
+      var w = getLoopWidth();
+      if (w <= 0) return;
+      while (position >= w) position -= w;
+      while (position < 0) position += w;
+    }
+
+    function applyTransform() {
+      wrapper.style.transform = "translate3d(" + -position + "px,0,0)";
+    }
+
+    function tick() {
+      if (!isDragging) {
+        var w = getLoopWidth();
+        if (w > 0) {
+          position += pxPerFrame;
+          if (position >= w) position -= w;
+          applyTransform();
+        }
       }
-      container.classList.add("is-paused");
+      rafId = window.requestAnimationFrame(tick);
     }
 
-    function scheduleResumeMarquee() {
-      if (resumeTimer) clearTimeout(resumeTimer);
-      resumeTimer = setTimeout(function () {
-        if (!isDragging) container.classList.remove("is-paused");
-      }, 800);
-    }
+    tick();
+
+    window.addEventListener("resize", function () {
+      normalizePosition();
+      applyTransform();
+    });
 
     container.addEventListener("pointerdown", function (event) {
       if (event.pointerType === "mouse" && event.button !== 0) return;
 
       isDragging = true;
       moved = false;
-      pauseMarquee();
       startX = event.clientX;
-      startScrollLeft = container.scrollLeft;
+      startPos = position;
       container.classList.add("is-dragging");
       container.setPointerCapture(event.pointerId);
     });
@@ -167,7 +191,9 @@
 
       var deltaX = event.clientX - startX;
       if (Math.abs(deltaX) > 3) moved = true;
-      container.scrollLeft = startScrollLeft - deltaX;
+      position = startPos - deltaX;
+      normalizePosition();
+      applyTransform();
       event.preventDefault();
     });
 
@@ -175,7 +201,6 @@
       if (!isDragging) return;
       isDragging = false;
       container.classList.remove("is-dragging");
-      scheduleResumeMarquee();
       if (event && event.pointerId !== undefined) {
         try {
           container.releasePointerCapture(event.pointerId);
@@ -195,6 +220,10 @@
         event.stopPropagation();
         moved = false;
       }
+    });
+
+    window.addEventListener("beforeunload", function () {
+      if (rafId) window.cancelAnimationFrame(rafId);
     });
   });
 })(jQuery);
