@@ -33,6 +33,7 @@
 
   --section-space-y: clamp(3.5rem, 7vw, 6.5rem);
   --section-space-x: clamp(1.5rem, 4vw, 3.5rem);
+  --nav-height: calc(0.72rem * 3.5);
 
   --radius-sm:  6px;
   --radius-md:  12px;
@@ -1357,10 +1358,10 @@ body.is-preload .banner.onload-image-fade-in .image img {
 }
 
 .banner.style1.image-position-right .image img {
-  -moz-object-position: right;
-  -webkit-object-position: right;
-  -ms-object-position: right;
-  object-position: right;
+  -moz-object-position: center;
+  -webkit-object-position: center;
+  -ms-object-position: center;
+  object-position: center;
 }
 
 .banner .image {
@@ -2588,7 +2589,7 @@ body.is-preload .items.onload-fade-in > * > .inner {
 
 @media screen and (max-width: 1062px) {
   .banner.style1 .content.banner-content {
-    width: clamp(18rem, 54%, 44rem) !important;
+    width: clamp(calc(18rem * var(--banner-scale)), 54%, calc(44rem * var(--banner-scale))) !important;
     max-width: 58% !important;
   }
 }
@@ -2599,15 +2600,15 @@ body.is-preload .items.onload-fade-in > * > .inner {
     text-align: left !important;
   }
   .banner.style1 .content.banner-content {
-    width: clamp(18rem, 52%, 42rem) !important;
+    width: clamp(calc(18rem * var(--banner-scale)), 52%, calc(42rem * var(--banner-scale))) !important;
     max-width: 54% !important;
   }
   .banner.style1.fullscreen {
-    min-height: clamp(440px, 68vh, 700px);
+    min-height: var(--banner-height-md);
   }
   .banner-content,
   .banner.style1.fullscreen .content.banner-content {
-    min-height: clamp(440px, 68vh, 700px);
+    min-height: var(--banner-height-md);
   }
   .banner.style1 .content img:not(.banner-logo) {
     margin-left: 0 !important;
@@ -2630,6 +2631,21 @@ body.is-preload .items.onload-fade-in > * > .inner {
 }
 
 .banner.style1 {
+  --banner-scale: 1.25;
+  --banner-img-src-w: 2086;
+  --banner-img-src-h: 980;
+  --banner-img-display-scale: 1;
+  --banner-img-w: calc(var(--banner-img-src-w) * var(--banner-img-display-scale));
+  --banner-img-h: calc(var(--banner-img-src-h) * var(--banner-img-display-scale));
+  --banner-height: min(
+    clamp(calc(460px * var(--banner-scale)), calc(72vh * var(--banner-scale)), calc(700px * var(--banner-scale))),
+    calc(var(--banner-img-h) * 1px)
+  );
+  --banner-height-md: min(
+    clamp(calc(440px * var(--banner-scale)), calc(68vh * var(--banner-scale)), calc(700px * var(--banner-scale))),
+    calc(var(--banner-img-h) * 1px)
+  );
+  --banner-img-width: calc(var(--banner-height) * var(--banner-img-w) / var(--banner-img-h));
   position: relative;
   overflow: hidden;
   justify-content: flex-start;
@@ -2641,55 +2657,63 @@ body.is-preload .items.onload-fade-in > * > .inner {
 }
 
 .banner.style1.fullscreen {
-  min-height: clamp(460px, 72vh, 700px);
+  height: var(--banner-height);
+  min-height: var(--banner-height);
+  max-height: var(--banner-height);
   overflow: hidden;
+  align-items: stretch;
 }
 
 .banner.style1 .image {
-  position: absolute;
-  inset: 0;
-  width: 100% !important;
-  height: 100% !important;
-  flex-shrink: 1 !important;
-  z-index: 0;
-  overflow: hidden;
-  background-color: var(--color-bg);
-}
-
-.banner.style1 .image img {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: auto;
-  width: auto;
+  width: min(var(--banner-img-width), 100%);
+  height: 100% !important;
+  min-height: 100%;
+  flex-shrink: 1 !important;
+  z-index: 0;
+  overflow: hidden;
+  background-color: var(--banner-bg);
+}
+
+.banner.style1 .image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  max-width: none;
+  max-width: calc(var(--banner-img-w) * 1px);
+  max-height: calc(var(--banner-img-h) * 1px);
+  margin: 0;
   transform: none;
-  object-fit: contain;
-  object-position: right center;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .banner.style1.image-position-right .image img {
-  object-position: right center;
+  object-position: center center;
 }
 
 .banner.style1 .content.banner-content {
   position: relative;
   z-index: 1;
-  width: clamp(20rem, 47%, 50rem) !important;
+  width: clamp(calc(20rem * var(--banner-scale)), 47%, calc(50rem * var(--banner-scale))) !important;
   max-width: 50% !important;
   flex: 0 0 auto !important;
   align-self: stretch !important;
-  min-height: clamp(460px, 72vh, 700px);
-  height: auto !important;
+  min-height: var(--banner-height);
+  height: var(--banner-height);
+  max-height: var(--banner-height);
   margin: 0 !important;
+  box-sizing: border-box;
 }
 
 .banner-content {
-  --banner-brand-gap: 2rem;
-  --banner-inset: clamp(1.5rem, 4.5vw, 3rem);
-  --banner-logo-width: min(520px, 100%);
+  --banner-brand-gap: calc(2rem * var(--banner-scale));
+  --banner-inset: clamp(calc(1.5rem * var(--banner-scale)), calc(4.5vw * var(--banner-scale)), calc(3rem * var(--banner-scale)));
+  --banner-logo-width: min(calc(520px * var(--banner-scale)), 100%);
   --banner-logo-src-w: 550;
   --banner-logo-src-h: 349;
   --banner-logo-offset-x: 60;
@@ -2700,15 +2724,16 @@ body.is-preload .items.onload-fade-in > * > .inner {
   border: none;
   border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
   position: relative;
-  min-height: clamp(460px, 72vh, 700px);
-  padding: clamp(1.5rem, 3vh, 2.5rem) var(--banner-inset) clamp(2rem, 4vh, 3rem) var(--banner-inset) !important;
+  min-height: var(--banner-height);
+  max-height: var(--banner-height);
+  padding: clamp(calc(1.5rem * var(--banner-scale)), calc(3vh * var(--banner-scale)), calc(2.5rem * var(--banner-scale))) var(--banner-inset) clamp(calc(2rem * var(--banner-scale)), calc(4vh * var(--banner-scale)), calc(3rem * var(--banner-scale))) var(--banner-inset) !important;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   gap: var(--banner-brand-gap);
   box-sizing: border-box;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .banner-content > * {
@@ -2731,7 +2756,7 @@ body.is-preload .items.onload-fade-in > * > .inner {
   top: 0;
   left: calc(-100% * var(--banner-logo-offset-x) / var(--banner-logo-content-w));
   width: calc(100% * var(--banner-logo-src-w) / var(--banner-logo-content-w));
-  height: clamp(0.75rem, 2.2vh, 1.35rem);
+  height: clamp(calc(0.75rem * var(--banner-scale)), calc(2.2vh * var(--banner-scale)), calc(1.35rem * var(--banner-scale)));
   z-index: 2;
   pointer-events: none;
   background: linear-gradient(
@@ -2765,6 +2790,7 @@ body.is-preload .items.onload-fade-in > * > .inner {
   padding-left: 0;
   margin-left: 0;
   flex-shrink: 0;
+  font-size: calc(1rem * var(--banner-scale));
 }
 
 .banner-text {
@@ -2774,29 +2800,95 @@ body.is-preload .items.onload-fade-in > * > .inner {
   line-height: 1.75;
 }
 
+.banner-text-wrapper > p.banner-text:not(.major) {
+  font-size: 0.85em;
+}
+
 p.major.banner-text {
   font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 1.2rem;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  font-size: calc(1.85rem * var(--banner-scale));
+  line-height: 1.22;
+  letter-spacing: -0.02em;
   color: var(--color-white) !important;
+}
+
+p.major.banner-text em {
+  font-weight: 700;
+  font-style: italic;
+  color: #9FE3DC !important;
+}
+
+@media screen and (min-width: 1100px) {
+  .banner.style1 {
+    --banner-content-min: max(
+      calc(24rem * var(--banner-scale)),
+      min(45vw, calc(52rem * var(--banner-scale)))
+    );
+    --banner-height: clamp(
+      calc(460px * var(--banner-scale)),
+      calc(72vh * var(--banner-scale)),
+      calc(var(--banner-img-h) * 1px)
+    );
+    --banner-img-width: min(
+      calc(var(--banner-height) * var(--banner-img-w) / var(--banner-img-h)),
+      calc(var(--banner-img-w) * 1px),
+      calc(100vw - var(--banner-content-min))
+    );
+  }
+
+  .banner.style1 .content.banner-content {
+    width: calc(100% - var(--banner-img-width)) !important;
+    max-width: calc(100% - var(--banner-img-width)) !important;
+    flex: 0 0 calc(100% - var(--banner-img-width)) !important;
+  }
+
+  .banner.style1 .image {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    width: var(--banner-img-width);
+    max-width: calc(100vw - var(--banner-content-min));
+    height: 100%;
+    aspect-ratio: var(--banner-img-w) / var(--banner-img-h);
+  }
+
+  .banner.style1 .image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: calc(var(--banner-img-w) * 1px);
+    max-height: calc(var(--banner-img-h) * 1px);
+    margin: 0;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+@media screen and (min-width: 1956px) {
+  .banner-content {
+    --banner-content-shift: clamp(2rem, calc((100vw - 1956px) * 0.14 + 2rem), 12rem);
+    padding-left: calc(var(--banner-inset) + var(--banner-content-shift)) !important;
+  }
 }
 
 @media screen and (min-width: 1600px) {
   .banner-content {
-    --banner-inset: clamp(1.75rem, 5vw, 3.5rem);
+    --banner-inset: clamp(calc(1.75rem * var(--banner-scale)), calc(5vw * var(--banner-scale)), calc(3.5rem * var(--banner-scale)));
   }
 
   .banner-text-wrapper {
-    font-size: 14pt;
+    font-size: calc(14pt * var(--banner-scale));
   }
 
-  .banner-text-wrapper .banner-text {
-    font-size: 1em;
+  .banner-text-wrapper .banner-text:not(.major) {
+    font-size: 0.85em;
   }
 
   .banner-text-wrapper p.major.banner-text {
-    font-size: 1.2em;
+    font-size: 1.7em;
+    line-height: 1.2;
   }
 
   .banner-text-wrapper .button {
@@ -2812,25 +2904,25 @@ p.major.banner-text {
 
 @media screen and (max-width: 1280px) {
   .banner-content {
-    --banner-inset: clamp(1.25rem, 4vw, 2.5rem);
-    --banner-logo-width: min(520px, 100%);
-    padding: 2.5rem var(--banner-inset) 2.5rem var(--banner-inset) !important;
+    --banner-inset: clamp(calc(1.25rem * var(--banner-scale)), calc(4vw * var(--banner-scale)), calc(2.5rem * var(--banner-scale)));
+    --banner-logo-width: min(calc(520px * var(--banner-scale)), 100%);
+    padding: calc(2.5rem * var(--banner-scale)) var(--banner-inset) calc(2.5rem * var(--banner-scale)) var(--banner-inset) !important;
   }
 }
 
 @media screen and (max-width: 1100px) {
   .banner.style1 .content.banner-content {
-    width: clamp(18rem, 56%, 44rem) !important;
+    width: clamp(calc(18rem * var(--banner-scale)), 56%, calc(44rem * var(--banner-scale))) !important;
     max-width: 58% !important;
-    min-height: clamp(440px, 68vh, 700px);
+    min-height: var(--banner-height-md);
   }
 
   .banner.style1.fullscreen {
-    min-height: clamp(440px, 68vh, 700px);
+    min-height: var(--banner-height-md);
   }
 
   .banner-content {
-    min-height: clamp(440px, 68vh, 700px);
+    min-height: var(--banner-height-md);
   }
 
   .banner-text-wrapper {
@@ -2841,12 +2933,12 @@ p.major.banner-text {
 
 @media screen and (max-width: 1024px) {
   .banner-content {
-    --banner-inset: clamp(1rem, 3.5vw, 2rem);
-    --banner-logo-width: min(520px, 100%);
-    padding: 2rem var(--banner-inset) 2rem var(--banner-inset) !important;
+    --banner-inset: clamp(calc(1rem * var(--banner-scale)), calc(3.5vw * var(--banner-scale)), calc(2rem * var(--banner-scale)));
+    --banner-logo-width: min(calc(520px * var(--banner-scale)), 100%);
+    padding: calc(2rem * var(--banner-scale)) var(--banner-inset) calc(2rem * var(--banner-scale)) var(--banner-inset) !important;
   }
   .banner.style1 .content {
-    padding: 2rem var(--banner-inset) 2rem var(--banner-inset) !important;
+    padding: calc(2rem * var(--banner-scale)) var(--banner-inset) calc(2rem * var(--banner-scale)) var(--banner-inset) !important;
   }
 }
 
@@ -2859,6 +2951,8 @@ p.major.banner-text {
   }
   .banner.style1.fullscreen {
     min-height: 0;
+    height: auto;
+    max-height: none;
     overflow: visible;
   }
   .banner.style1 .image {
@@ -2866,36 +2960,46 @@ p.major.banner-text {
     inset: auto;
     width: 100% !important;
     max-width: 100% !important;
-    height: clamp(280px, 50vh, 520px) !important;
+    height: clamp(calc(280px * var(--banner-scale)), calc(50vh * var(--banner-scale)), calc(520px * var(--banner-scale))) !important;
     flex-shrink: 0;
-    background-color: var(--color-bg);
+    background-color: var(--banner-bg);
   }
   .banner.style1 .image img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
     object-fit: cover;
-    object-position: center;
+    object-position: center center;
+  }
+
+  .banner.style1.image-position-right .image img {
+    object-position: center center;
   }
   .banner.style1 .content.banner-content {
     width: 100% !important;
     max-width: 100% !important;
     min-height: 0 !important;
     height: auto !important;
+    max-height: none !important;
     align-self: stretch !important;
     flex: 1 1 auto !important;
     border-radius: 0;
-    padding: clamp(1.75rem, 4vw, 2.25rem) var(--banner-inset) !important;
+    padding: clamp(calc(1rem * var(--banner-scale)), calc(2.5vw * var(--banner-scale)), calc(1.35rem * var(--banner-scale))) var(--banner-inset) clamp(calc(1.75rem * var(--banner-scale)), calc(4vw * var(--banner-scale)), calc(2.25rem * var(--banner-scale))) var(--banner-inset) !important;
   }
   .banner-content {
-    --banner-inset: clamp(1.25rem, 4vw, 2rem);
+    --banner-inset: clamp(calc(1.25rem * var(--banner-scale)), calc(4vw * var(--banner-scale)), calc(2rem * var(--banner-scale)));
     justify-content: center;
     min-height: 0;
+    max-height: none;
+    overflow: visible;
     background: var(--banner-bg);
   }
   .banner-content {
-    --banner-logo-width: min(420px, 85%);
+    --banner-logo-width: min(calc(420px * var(--banner-scale)), 85%);
   }
   .banner-logo-wrap {
     width: var(--banner-logo-width);
@@ -2912,13 +3016,13 @@ p.major.banner-text {
 
 @media screen and (orientation: portrait) and (min-width: 821px) and (max-width: 1260px) {
   .banner.style1 .content.banner-content {
-    width: clamp(18rem, 52%, 40rem) !important;
+    width: clamp(calc(18rem * var(--banner-scale)), 52%, calc(40rem * var(--banner-scale))) !important;
     max-width: 54% !important;
   }
   .banner-content {
-    --banner-inset: clamp(1.25rem, 3.5vw, 2.25rem);
-    --banner-logo-width: min(520px, 100%);
-    padding: var(--banner-inset) var(--banner-inset) clamp(1.5rem, 4vh, 2.5rem) var(--banner-inset) !important;
+    --banner-inset: clamp(calc(1.25rem * var(--banner-scale)), calc(3.5vw * var(--banner-scale)), calc(2.25rem * var(--banner-scale)));
+    --banner-logo-width: min(calc(520px * var(--banner-scale)), 100%);
+    padding: var(--banner-inset) var(--banner-inset) clamp(calc(1.5rem * var(--banner-scale)), calc(4vh * var(--banner-scale)), calc(2.5rem * var(--banner-scale))) var(--banner-inset) !important;
   }
   .banner-logo {
     transform: none;
@@ -2945,6 +3049,178 @@ p.major.banner-text {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
+
+/* Hero navbar */
+#inicio,
+#first,
+#sobre,
+#contato {
+  scroll-margin-top: var(--nav-height);
+}
+
+.hero-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 0;
+  pointer-events: none;
+}
+
+.hero-nav-list,
+.hero-nav-toggle {
+  pointer-events: auto;
+}
+
+.hero-nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  min-height: var(--nav-height);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: inset 0 -1px 0 var(--color-accent-soft);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.hero-nav-list a {
+  display: block;
+  flex: 1;
+  text-align: center;
+  height: 3.5em;
+  line-height: 3.5em;
+  padding: 0 1.35em;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-primary) !important;
+  border-radius: 0;
+  white-space: nowrap;
+  transition: all var(--transition-mid);
+}
+
+.hero-nav-list a:hover,
+.hero-nav-list a:active {
+  background-color: var(--color-primary);
+  color: var(--color-accent-soft) !important;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0.45rem clamp(0.75rem, 4vw, 1.25rem) 0.45rem auto;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.hero-nav-toggle span {
+  display: block;
+  width: 1.25rem;
+  height: 2px;
+  margin: 0 auto;
+  background: var(--color-primary);
+  border-radius: 1px;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.hero-nav-toggle:hover {
+  background: var(--color-accent-soft);
+}
+
+.hero-nav.is-open .hero-nav-toggle span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hero-nav.is-open .hero-nav-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.hero-nav.is-open .hero-nav-toggle span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media screen and (max-width: 980px) {
+  :root {
+    --nav-height: 3.4rem;
+  }
+
+  .hero-nav {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: inset 0 -1px 0 var(--color-accent-soft);
+    min-height: var(--nav-height);
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .hero-nav-toggle {
+    display: flex;
+  }
+
+  .hero-nav-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-0.35rem);
+    transition:
+      opacity var(--transition-fast),
+      visibility var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .hero-nav.is-open .hero-nav-list {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .hero-nav-list a {
+    text-align: center;
+    height: 3em;
+    line-height: 3em;
+    padding: 0 1em;
+  }
+
+  .hero-nav-list a:hover,
+  .hero-nav-list a:active {
+    transform: none;
+  }
+}
+
 a.button {
   text-decoration: none;
 }
@@ -2955,42 +3231,98 @@ a.button {
 }
 
 .secao-servicos .items.style1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 1.5rem;
   justify-content: center;
+  align-items: start;
 }
 
 .secao-servicos .items.style1 > .card {
-  flex: 0 1 calc((100% - 3rem) / 3);
-  width: calc((100% - 3rem) / 3);
-  max-width: calc((100% - 3rem) / 3);
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  flex: unset !important;
+  width: auto !important;
+  max-width: none !important;
+  height: auto;
+  gap: 0;
+}
+
+.secao-servicos .items.style1 .card .servico-icone {
+  grid-row: 1;
+  align-self: start;
+}
+
+.secao-servicos .items.style1 .card h3 {
+  grid-row: 2;
+  margin: 0 0 1rem;
+  min-height: calc(2 * 1.25 * 1.35rem);
+}
+
+.secao-servicos .items.style1 .card p {
+  grid-row: 3;
+  margin: 0;
+  min-height: calc(4 * 1.7 * 0.95rem);
+  line-height: 1.7;
+}
+
+.secao-servicos .items.style1 .card ul.alt {
+  grid-row: 4;
+  width: 100%;
+  text-align: left;
+  margin: 1.25rem 0 0;
+}
+
+.secao-servicos .items.style1 .card .servico-ver-mais {
+  grid-row: 5;
+  justify-self: center;
+}
+
+@supports not (grid-template-rows: subgrid) {
+  .secao-servicos .items.style1 .card h3 {
+    min-height: calc(2 * 1.25 * 1.35rem);
+  }
+
+  .secao-servicos .items.style1 .card p {
+    min-height: calc(4 * 1.7 * 0.95rem);
+  }
 }
 
 @media screen and (max-width: 980px) {
-  .secao-servicos .items.style1 > .card {
-    flex: 0 1 calc((100% - 1.5rem) / 2);
-    width: calc((100% - 1.5rem) / 2);
-    max-width: calc((100% - 1.5rem) / 2);
+  .secao-servicos .items.style1 {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (max-width: 480px) {
-  .secao-servicos .items.style1 > .card {
-    flex: 0 1 100%;
-    width: 100%;
-    max-width: 100%;
+  .secao-servicos .items.style1 {
+    grid-template-columns: 1fr;
   }
 }
 
 .servico-icone {
   display: block;
-  width: clamp(72px, 12vw, 160px);
+  width: clamp(96px, 16vw, 200px);
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 1.25rem;
-  transition: transform var(--transition-mid);
+  transition: transform var(--transition-mid), filter var(--transition-mid);
+}
+
+
+/* Lilás recolorido no PNG (scripts/recolor-licenciamento.mjs). Sem filtro CSS. */
+.servico-icone--licenciamento {
+  filter: none;
 }
 
 .card:hover .servico-icone {
   transform: scale(1.05);
+}
+
+.card:hover .servico-icone--licenciamento {
+  filter: none;
 }
 
 .servico-ver-mais {
@@ -3015,14 +3347,34 @@ a.button {
   overflow: visible;
 }
 
+#wrapper > section.wrapper.style1.secao-mvv {
+  padding-top: clamp(1rem, 2.5vw, 1.75rem);
+  padding-bottom: clamp(1rem, 2.5vw, 1.75rem);
+}
+
+.secao-mvv .cards-destaque {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.secao-mvv .cards-destaque > section {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.secao-mvv .cards-destaque > section .card-header {
+  margin-bottom: 1rem;
+}
+
 .secao-porque {
   background-color: var(--color-bg);
 }
 
-section.wrapper.style1.secao-mvv > .inner {
+#wrapper > section.wrapper.style1.secao-mvv > .inner {
   width: 100%;
   max-width: 100%;
-  padding: 0 var(--section-space-x);
+  padding-left: clamp(0.75rem, 2vw, 1.25rem);
+  padding-right: clamp(0.75rem, 2vw, 1.25rem);
   overflow: visible;
 }
 
@@ -3344,13 +3696,17 @@ section.wrapper.style1.secao-mvv > .inner {
   gap: 1.25rem;
 }
 
+.contato-grid form label {
+  margin-bottom: 1rem;
+}
+
 .contato-grid button {
   margin-top: 1.5rem;
 }
 
 @media screen and (max-width: 736px) {
   .servico-icone {
-    width: clamp(100px, 28vw, 160px);
+    width: clamp(120px, 32vw, 200px);
   }
 
   .contato-grid {
@@ -3396,7 +3752,7 @@ footer .icons a:hover {
 
 /* --- Botão flutuante WhatsApp --- */
 #whatsapp-float {
-  --wa-size: clamp(54px, 12vmin, 78px);
+  --wa-size: clamp(64px, 14vmin, 92px);
   position: fixed;
   bottom: clamp(1rem, 0.65rem + 2.8vmin, 3rem);
   right: clamp(1rem, 0.65rem + 2.8vmin, 3rem);
@@ -3497,6 +3853,11 @@ footer .icons a:hover {
   text-align: center;
   height: 100%;
   box-sizing: border-box;
+}
+
+.secao-servicos .items.style1 .card {
+  height: auto;
+  padding-bottom: 1.5rem !important;
 }
 
 .secao-servicos .items.onscroll-fade-in > .card {

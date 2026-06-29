@@ -79,8 +79,16 @@
     })();
 
   // Smooth scroll.
-  $(".smooth-scroll").scrolly();
-  $(".smooth-scroll-middle").scrolly({ anchor: "middle" });
+  function navScrollOffset() {
+    var nav = document.querySelector(".hero-nav");
+    return nav ? nav.offsetHeight : 0;
+  }
+
+  $(".smooth-scroll").scrolly({ offset: navScrollOffset });
+  $(".smooth-scroll-middle").scrolly({
+    anchor: "middle",
+    offset: navScrollOffset,
+  });
 
   // Wrapper.
   $wrapper.children().scrollex({
@@ -226,4 +234,30 @@
       if (rafId) window.cancelAnimationFrame(rafId);
     });
   });
+
+  var heroNav = document.querySelector(".hero-nav");
+  if (heroNav) {
+    var heroNavToggle = heroNav.querySelector(".hero-nav-toggle");
+    var heroNavLinks = heroNav.querySelectorAll(".hero-nav-list a");
+    if (heroNavToggle) {
+      heroNavToggle.addEventListener("click", function () {
+        var isOpen = heroNav.classList.toggle("is-open");
+        heroNavToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        heroNavToggle.setAttribute(
+          "aria-label",
+          isOpen ? "Fechar menu" : "Abrir menu"
+        );
+      });
+    }
+
+    heroNavLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        heroNav.classList.remove("is-open");
+        if (heroNavToggle) {
+          heroNavToggle.setAttribute("aria-expanded", "false");
+          heroNavToggle.setAttribute("aria-label", "Abrir menu");
+        }
+      });
+    });
+  }
 })(jQuery);

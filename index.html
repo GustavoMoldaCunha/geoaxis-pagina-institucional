@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" href="images/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,900&family=Lato:wght@300;400;700&display=swap">
     
     <meta
       name="viewport"
@@ -31,7 +31,7 @@
     />
     <meta
       property="og:image"
-      content="https://www.geoaxisambiental.com.br/images/banner.jpg"
+      content="https://www.geoaxisambiental.com.br/images/banner.webp"
     />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://www.geoaxisambiental.com.br/" />
@@ -45,7 +45,7 @@
     />
     <meta
       property="twitter:image"
-      content="https://www.geoaxisambiental.com.br/images/banner.jpg"
+      content="https://www.geoaxisambiental.com.br/images/banner.webp"
     />
 
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -77,9 +77,29 @@
   </head>
 
 <body class="is-preload">
+    <nav class="hero-nav" aria-label="Navegação principal">
+      <button
+        type="button"
+        class="hero-nav-toggle"
+        aria-expanded="false"
+        aria-controls="hero-nav-list"
+        aria-label="Abrir menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="hero-nav-list" id="hero-nav-list">
+        <li><a href="#inicio" class="smooth-scroll">Início</a></li>
+        <li><a href="#first" class="smooth-scroll">Serviços</a></li>
+        <li><a href="#sobre" class="smooth-scroll">Sobre</a></li>
+        <li><a href="#contato" class="smooth-scroll">Contato</a></li>
+      </ul>
+    </nav>
     <div id="wrapper" class="divided">
       <!-- Banner -->
       <section
+        id="inicio"
         class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right"
       >
         <div class="content banner-content">
@@ -88,7 +108,7 @@
           </div>
           <div class="banner-text-wrapper">
             <p class="major banner-text">
-              O eixo certo para a sustentabilidade do seu negócio.
+              O <em>eixo</em> certo para a sustentabilidade do seu negócio.
             </p>
             <p class="banner-text">
               Oferecemos consultoria e engenharia ambiental para empresas que
@@ -107,7 +127,12 @@
           </div>
         </div>
         <div class="image">
-          <img src="images/banner.jpg" alt="Natureza e sustentabilidade" />
+          <img
+            src="images/banner.webp"
+            width="2086"
+            height="980"
+            alt="Natureza e sustentabilidade"
+          />
         </div>
       </section>
 
@@ -141,7 +166,7 @@
               <img
                 src="images/Licenciamento.png"
                 alt="Licenciamento Ambiental"
-                class="servico-icone"
+                class="servico-icone servico-icone--licenciamento"
               />
               <h3>Licenciamento Ambiental</h3>
               <p>
@@ -215,6 +240,7 @@
 
       <!-- Sobre -->
       <section
+        id="sobre"
         class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in"
       >
         <div class="content">
@@ -285,7 +311,7 @@
       </section>
 
       <!-- Por que escolher a GeoAxis -->
-      <section class="wrapper style1 align-center secao-porque">
+      <section class="wrapper style1 align-center secao-porque" id="porque">
         <div class="inner">
           <h2>Por que escolher a GeoAxis?</h2>
           <p>
@@ -387,7 +413,7 @@
       </section>
 
       <!-- Contato -->
-      <section class="wrapper style1">
+      <section class="wrapper style1" id="contato">
         <div class="inner">
 
           <h2 class="align-center">Contato</h2>
