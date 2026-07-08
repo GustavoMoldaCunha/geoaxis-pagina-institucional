@@ -3036,6 +3036,45 @@ p.major.banner-text em {
   }
 }
 
+/* Short desktop/landscape: let hero grow with content instead of clipping */
+@media screen and (max-height: 732px) and (min-width: 737px) {
+  .banner.style1 {
+    --banner-scale: 1.05;
+  }
+
+  .banner.style1.fullscreen {
+    height: auto;
+    min-height: calc(100dvh - var(--nav-height));
+    max-height: none;
+    overflow: visible;
+  }
+
+  .banner.style1 .content.banner-content,
+  .banner-content,
+  .banner.style1.fullscreen .content.banner-content {
+    height: auto !important;
+    min-height: calc(100dvh - var(--nav-height));
+    max-height: none !important;
+    overflow: visible;
+  }
+
+  .banner-content {
+    --banner-brand-gap: clamp(0.65rem, 1.8vh, 1rem);
+    --banner-logo-width: min(420px, 100%);
+    justify-content: center;
+    padding-top: clamp(2rem, 4.5vh, 2.75rem) !important;
+    padding-bottom: clamp(2rem, 4.5vh, 2.75rem) !important;
+  }
+
+  .banner-text-wrapper .banner-text:not(.major) {
+    margin-bottom: 1.25em;
+  }
+
+  .banner-text-wrapper p.major.banner-text {
+    margin-bottom: 0.85em;
+  }
+}
+
 .banner .button.smooth-scroll-middle {
   box-shadow: inset 0 0 0 1.5px var(--color-accent-soft);
   color: var(--color-accent-soft) !important;
@@ -3059,7 +3098,7 @@ p.major.banner-text em {
 }
 
 .hero-nav {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
@@ -3070,6 +3109,7 @@ p.major.banner-text em {
   justify-content: stretch;
   gap: 0;
   pointer-events: none;
+  flex-shrink: 0;
 }
 
 .hero-nav-list,
@@ -3724,6 +3764,16 @@ a.button {
   color: rgba(255, 255, 255, 0.55);
   font-size: 0.85rem;
   letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.footer-legal {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  max-width: 52rem;
+  margin: 0 auto;
 }
 
 footer.wrapper.style1 > .inner {
