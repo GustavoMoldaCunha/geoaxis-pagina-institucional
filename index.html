@@ -77,24 +77,54 @@
   </head>
 
 <body class="is-preload">
+    <div class="hero-nav-topbar">
+      <div class="hero-nav-inner">
+        <span><i class="icon solid fa-leaf"></i> Consultoria e engenharia ambiental</span>
+        <a href="mailto:geoaxis.ambiental@gmail.com">
+          <i class="icon solid fa-envelope"></i> geoaxis.ambiental@gmail.com
+        </a>
+        <div class="hero-nav-social">
+          <span>Siga-nos</span>
+          <a href="https://instagram.com/geoaxis.ambiental" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <i class="icon brands fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/5521987617886" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <i class="icon brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
     <nav class="hero-nav" aria-label="Navegação principal">
-      <button
-        type="button"
-        class="hero-nav-toggle"
-        aria-expanded="false"
-        aria-controls="hero-nav-list"
-        aria-label="Abrir menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="hero-nav-list" id="hero-nav-list">
-        <li><a href="#inicio" class="smooth-scroll">Início</a></li>
-        <li><a href="#first" class="smooth-scroll">Serviços</a></li>
-        <li><a href="#sobre" class="smooth-scroll">Sobre</a></li>
-        <li><a href="#contato" class="smooth-scroll">Contato</a></li>
-      </ul>
+      <div class="hero-nav-main">
+        <div class="hero-nav-inner">
+          <a href="#inicio" class="hero-nav-logo smooth-scroll" aria-label="GeoAxis — Início">
+            <img src="images/logo.gif" alt="GeoAxis" />
+          </a>
+          <button
+            type="button"
+            class="hero-nav-toggle"
+            aria-expanded="false"
+            aria-controls="hero-nav-list"
+            aria-label="Abrir menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <ul class="hero-nav-list" id="hero-nav-list">
+            <li><a href="#inicio" class="smooth-scroll">Início</a></li>
+            <li><a href="#first" class="smooth-scroll">Serviços</a></li>
+            <li><a href="#sobre" class="smooth-scroll">Sobre</a></li>
+            <li><a href="#contato" class="smooth-scroll">Contato</a></li>
+          </ul>
+          <a href="#contato" class="hero-nav-cta smooth-scroll">
+            Solicite um orçamento
+            <span class="hero-nav-cta-arrow" aria-hidden="true">
+              <i class="icon solid fa-arrow-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
     </nav>
     <div id="wrapper" class="divided">
       <!-- Banner -->
@@ -103,27 +133,30 @@
         class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right"
       >
         <div class="content banner-content">
-          <div class="banner-logo-wrap">
-            <img src="images/logo.gif" alt="GeoAxis" class="banner-logo" />
-          </div>
           <div class="banner-text-wrapper">
-            <p class="major banner-text">
-              O <em>eixo</em> certo para a sustentabilidade do seu negócio.
-            </p>
+            <h1 class="major banner-text">
+              O eixo certo para a <em>sustentabilidade</em> do seu negócio
+            </h1>
             <p class="banner-text">
-              Oferecemos consultoria e engenharia ambiental para empresas que
-              buscam atuar de forma sustentável e em conformidade com as normas
-              ambientais. Com soluções personalizadas e foco técnico, ajudamos o
-              seu negócio a reduzir riscos, otimizar processos e crescer com
-              responsabilidade ambiental.
+              Consultoria e engenharia ambiental com soluções personalizadas
+              para reduzir riscos, garantir conformidade e impulsionar o
+              crescimento responsável da sua empresa.
             </p>
-            <ul class="actions stacked">
-              <li>
-                <a href="#first" class="button large wide smooth-scroll-middle">
-                  Conheça nossas soluções
-                </a>
-              </li>
-            </ul>
+            <div class="banner-actions">
+              <a href="#first" class="button banner-primary smooth-scroll-middle">
+                Conheça nossas soluções
+                <i class="icon solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+              <a href="tel:+5521987617886" class="banner-phone">
+                <span class="banner-phone-icon">
+                  <i class="icon solid fa-phone" aria-hidden="true"></i>
+                </span>
+                <span>
+                  <small>Fale conosco</small>
+                  <strong>+55 21 98761-7886</strong>
+                </span>
+              </a>
+            </div>
           </div>
         </div>
         <div class="image">
@@ -266,45 +299,61 @@
       <!-- Missão, Visão e Valores -->
       <section class="wrapper style1 align-center secao-mvv">
         <div class="inner">
-          <div class="items style3 small onscroll-fade-in cards-destaque">
+          <div class="mvv-intro">
+            <span class="mvv-eyebrow">Nossa essência</span>
+            <h2>Princípios que orientam cada decisão</h2>
+            <p>
+              Nossa atuação combina responsabilidade, excelência técnica e
+              visão estratégica para transformar desafios ambientais em
+              soluções seguras e sustentáveis.
+            </p>
+          </div>
+
+          <div class="items style3 small cards-destaque">
             <section>
-              <div class="card-header">
-                <h3>Missão</h3>
-                <span class="icon solid style2 major fa-bullseye"></span>
+              <div class="mvv-body">
+                <div class="mvv-heading">
+                  <h3>Missão</h3>
+                  <span class="icon solid mvv-icon fa-bullseye" aria-hidden="true"></span>
+                </div>
+                <p>
+                  Oferecer consultoria e assessoria técnica com excelência,
+                  fornecer direcionamento seguro aos clientes, assegurar
+                  conformidade regulatória e contribuir para a sustentabilidade
+                  dos negócios.
+                </p>
               </div>
-              <p>
-                Oferecer consultoria e assessoria técnica com excelência,
-                fornecer direcionamento seguro aos clientes, assegurar
-                conformidade regulatória e contribuir para a sustentabilidade
-                dos negócios.
-              </p>
             </section>
 
             <section>
-              <div class="card-header">
-                <h3>Visão</h3>
-                <span class="icon solid style2 major fa-binoculars"></span>
+              <div class="mvv-body">
+                <div class="mvv-heading">
+                  <h3>Visão</h3>
+                  <span class="icon solid mvv-icon fa-binoculars" aria-hidden="true"></span>
+                </div>
+                <p>
+                  Ser reconhecida como referência em consultoria e assessoria
+                  técnica, tornando-se o eixo estratégico para decisões seguras e
+                  sustentáveis no ambiente empresarial.
+                </p>
               </div>
-              <p>
-                Ser reconhecida como referência em consultoria e assessoria
-                técnica, tornando-se o eixo estratégico para decisões seguras e
-                sustentáveis no ambiente empresarial.
-              </p>
             </section>
 
             <section>
-              <div class="card-header">
-                <h3>Valores</h3>
-                <span class="icon solid style2 major fa-heart"></span>
+              <div class="mvv-body">
+                <div class="mvv-heading">
+                  <h3>Valores</h3>
+                  <span class="icon solid mvv-icon fa-heart" aria-hidden="true"></span>
+                </div>
+                <ul>
+                  <li>Atuar com ética, integridade e transparência</li>
+                  <li>Direcionar decisões com responsabilidade e segurança</li>
+                  <li>Buscar excelência técnica e melhoria contínua</li>
+                  <li>Construir relações de confiança e parceria</li>
+                  <li>Promover sustentabilidade com visão estratégica</li>
+                  <li>Entregar soluções com eficiência e precisão</li>
+                </ul>
               </div>
-              <ul>
-                <li>Atuar com ética, integridade e transparência</li>
-                <li>Direcionar decisões com responsabilidade e segurança</li>
-                <li>Buscar excelência técnica e melhoria contínua</li>
-                <li>Construir relações de confiança e parceria</li>
-                <li>Promover sustentabilidade com visão estratégica</li>
-                <li>Entregar soluções com eficiência e precisão</li>
-              </ul>
             </section>
           </div>
         </div>
