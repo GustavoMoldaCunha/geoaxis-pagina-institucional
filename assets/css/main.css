@@ -2662,12 +2662,12 @@ body.is-preload .items.onload-fade-in > * > .inner {
   background: linear-gradient(
     90deg,
     var(--banner-bg) 0%,
-    var(--banner-bg) 42%,
-    rgba(3, 61, 70, 0.92) 52%,
-    rgba(3, 61, 70, 0.7) 62%,
-    rgba(3, 61, 70, 0.38) 72%,
-    rgba(3, 61, 70, 0.12) 84%,
-    rgba(3, 61, 70, 0) 100%
+    var(--banner-bg) 38%,
+    rgba(3, 61, 70, 0.9) 46%,
+    rgba(3, 61, 70, 0.62) 53%,
+    rgba(3, 61, 70, 0.3) 60%,
+    rgba(3, 61, 70, 0.08) 66%,
+    rgba(3, 61, 70, 0) 70%
   );
 }
 
