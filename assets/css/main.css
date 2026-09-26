@@ -3335,7 +3335,37 @@ body.is-preload .items.onload-fade-in > * > .inner {
   min-height: 4.5rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+.banner.style1 .content.banner-content {
+  justify-content: center;
+  padding-block: clamp(2rem, 4vh, 3rem) !important;
+}
+
+.banner-text-wrapper .banner-logo-above-title {
+  /* Exclude the GIF's empty top margin from vertical centering. */
+  --banner-logo-content-h: 114;
+  width: clamp(11.5rem, 18.4vw, 13.8rem);
+  max-width: 100%;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+}
+
+.banner-logo-above-title .banner-logo {
+  top: calc(-100% * 68 / var(--banner-logo-content-h));
+  transform: none;
+  filter: url(#logo-remove-background);
+}
+
+.banner-logo-above-title::before {
+  content: none;
+}
+
+.logo-filter-definitions {
+  position: absolute;
+  pointer-events: none;
 }
 
 .hero-nav-logo {
@@ -3588,16 +3618,14 @@ a.button {
 .secao-servicos .items.style1 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto auto;
   gap: 1.5rem;
   justify-content: center;
   align-items: start;
 }
 
 .secao-servicos .items.style1 > .card {
-  display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 3;
+  display: block;
+  align-self: start;
   flex: unset !important;
   width: auto !important;
   max-width: none !important;
@@ -3711,7 +3739,7 @@ a.button {
 }
 
 .secao-mvv .cards-destaque {
-  gap: 1.5rem !important;
+  gap: 2rem !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   transform: translateX(-4rem);
@@ -3791,7 +3819,7 @@ a.button {
   width: auto !important;
   min-width: 0;
   min-height: 0;
-  padding: 2rem 1.75rem !important;
+  padding: 2rem 1.75rem 2.5rem !important;
   border: 1px solid transparent;
   border-radius: var(--radius-lg);
   text-align: left;
@@ -3807,12 +3835,17 @@ a.button {
   position: absolute;
   right: -3rem;
   bottom: -3rem;
-  width: 9rem;
-  height: 9rem;
+  width: var(--decorative-circle-size, 9rem);
+  height: var(--decorative-circle-size, 9rem);
   border-radius: 50%;
   background: currentColor;
   opacity: 0.06;
   pointer-events: none;
+}
+
+.cards-destaque > section:nth-child(2)::after {
+  left: -3rem;
+  right: auto;
 }
 
 .cards-destaque > section:hover {
@@ -3822,6 +3855,7 @@ a.button {
 
 /* Missão — card claro */
 .cards-destaque > section:nth-child(1) {
+  --decorative-circle-size: 8rem;
   background: var(--color-white);
   border-color: var(--color-border);
   color: var(--color-primary);
@@ -3829,12 +3863,14 @@ a.button {
 
 /* Visão — card verde-água */
 .cards-destaque > section:nth-child(2) {
+  --decorative-circle-size: 10rem;
   background: var(--color-accent-soft);
   color: var(--color-primary-dark);
 }
 
 /* Valores — card escuro */
 .cards-destaque > section:nth-child(3) {
+  --decorative-circle-size: 12rem;
   background: linear-gradient(150deg, var(--color-primary), var(--color-primary-dark));
   color: var(--color-white);
 }

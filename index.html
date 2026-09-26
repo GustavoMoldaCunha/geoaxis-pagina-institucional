@@ -77,6 +77,19 @@
   </head>
 
 <body class="is-preload">
+    <svg class="logo-filter-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="0" height="0">
+      <defs>
+        <filter id="logo-remove-background" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%">
+          <!-- Separate the light artwork from the dark teal GIF background. -->
+          <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0
+            0 0 0 0 0
+            0 0 0 0 0
+            2 0 0 0 -0.26" result="logo-mask" />
+          <feFlood flood-color="#9ee2df" result="logo-color" />
+          <feComposite in="logo-color" in2="logo-mask" operator="in" />
+        </filter>
+      </defs>
+    </svg>
     <div class="hero-nav-topbar">
       <div class="hero-nav-inner">
         <span><i class="icon solid fa-leaf"></i> Consultoria e engenharia ambiental</span>
@@ -97,9 +110,6 @@
     <nav class="hero-nav" aria-label="Navegação principal">
       <div class="hero-nav-main">
         <div class="hero-nav-inner">
-          <a href="#inicio" class="hero-nav-logo smooth-scroll" aria-label="GeoAxis — Início">
-            <img src="images/logo.gif" alt="GeoAxis" />
-          </a>
           <button
             type="button"
             class="hero-nav-toggle"
@@ -134,6 +144,9 @@
       >
         <div class="content banner-content">
           <div class="banner-text-wrapper">
+            <div class="banner-logo-wrap banner-logo-above-title">
+              <img src="images/logo.gif" alt="GeoAxis" class="banner-logo" width="550" height="349" />
+            </div>
             <h1 class="major banner-text">
               O eixo certo para a <em>sustentabilidade</em> do seu negócio
             </h1>
@@ -609,15 +622,22 @@
 
     <script>// botão ver mais
       document.querySelectorAll(".servico-ver-mais").forEach(function (btn) {
+        btn.setAttribute("aria-expanded", "false");
         btn.addEventListener("click", function () {
-          var extras = this.previousElementSibling.querySelectorAll(
-            ".servico-item-extra",
-          );
-          var hidden = extras[0].style.display === "none";
-          extras.forEach(function (el) {
-            el.style.display = hidden ? "list-item" : "none";
-          });
-          this.textContent = hidden ? "Ver menos" : "Ver mais";
+          var extras = jQuery(this.previousElementSibling).find(".servico-item-extra");
+          var expanded = this.getAttribute("aria-expanded") !== "true";
+          var duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 250;
+
+          extras.stop(true, true).animate({
+            height: expanded ? "show" : "hide",
+            paddingTop: expanded ? "show" : "hide",
+            paddingBottom: expanded ? "show" : "hide",
+            marginTop: expanded ? "show" : "hide",
+            marginBottom: expanded ? "show" : "hide",
+            opacity: expanded ? "show" : "hide"
+          }, duration);
+          this.setAttribute("aria-expanded", String(expanded));
+          this.textContent = expanded ? "Ver menos" : "Ver mais";
         });
       });
       </script>
